@@ -1,5 +1,2 @@
 #!/bin/bash
-0-current_working_directory
-1-listit
-2-bring_me_home
-README.md \n
+0-current_working_directory 1-listit 2-bring_me_home README.md \n
