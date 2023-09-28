@@ -9,6 +9,8 @@ count=1
 
 while [ $count -le 20 ];
 do
+	echo $count
+
 	case $count in
 	4)
 		echo "bad luck from China"
@@ -18,9 +20,6 @@ do
 		;;
 	17)
 		echo "bad luxk from Italy"
-		;;
-	*)
-		echo $count
 		;;
 	esac
 
