@@ -2,7 +2,7 @@
 #This bash script displays "Best School" 10 times using "until"
 
 
-count="0"
+count=0
 
 until [ $count == 10 ]; do
 	echo "Best School"
