@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#This bash script displays time"
+
+
+second=0
+hour=0
+
+
+while [ $hour -le 12 ];
+do
+	second=1
+	echo "Hour: $hour"
+
+	while [ $second -le 59 ];
+	do
+		echo $second	
+		((second++))
+	done
+	
+	((hour++))
+done
