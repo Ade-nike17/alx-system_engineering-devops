@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#This bash script displays:
+#The content of the current directory in a list format where only the part of the name after the first dash is displayed (refer to the example)
+
+
+for file in *;
+do
+	if [ -f "$file" ];
+	then
+		name_part=$(echo "$file" | awk -F'-' '{print $2}')
+		echo "$name_part"
+	fi
+done
