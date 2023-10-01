@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#This bash script manages "manage_my_process" bash script
+
+
+### BEGIN INIT INFO
+#Provides: manage_my_process
+#Required-Start: $local_fs $remote_fs $network $syslog
+#Required-Stop: $local_fs $remote_fs $network $syslog
+#Default-Start: 2 3 4 5
+#Default-Stop: 0 1 6
+#Short-Description: Start/stop/restart manage_my_process
+#Description: Start/stop/restart manage_my_process
+### END INIT INFO
+
+
+if [ "$1" == "start" ]
+then
+	./manage_my_process &
+	touch /var/run/my_process.pid
+	echo "$!" > /var/run/my_process.pid
+	echo "manage_my_process started"
+
+elif [ "$1" == "stop" ]
+then
+	echo "manage_my_process stopped"
+	kill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
+
+elif [ "$1" == "restart" ]
+then
+	kill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
+	./manage_my_process &
+	touch /var/run/my_process.pid
+	echo "$!" > /var/run/my_process.pid
+	echo "manage_my_process restarted"
+
+else
+	echo "Usage: manage_my_process {start|stop|restart}"
+fi
