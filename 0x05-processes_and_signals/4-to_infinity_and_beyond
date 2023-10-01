@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#this bash script displays "To infinity and beyond indefinitely"
+
+
+while true
+do
+	echo "To inifinty and beyond"
+	sleep 2
+done
