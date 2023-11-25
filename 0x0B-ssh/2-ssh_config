@@ -1,0 +1,9 @@
+# This machine has an SSH configuration file for the local SSH client
+# This file configures it to connect to a server without typing a password
+Host *
+	HashKnownHosts yes
+	GSSAPIAunthetication yes
+	GSSAPIDelegateCredentials no
+	SendEnv LANG LC_*
+	IdentifyFile ~/.ssh/school
+	PasswordAuthentication no
