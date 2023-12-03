@@ -9,7 +9,7 @@ echo "Hello World" > etc/nginx/html/index.html
 
 # Use sed to replace the location block in Nginx configuration
 sed -i "s|location / {|location /redirect_me {|g"  /etc/nginx/sites-available/default
-sed -i "s|try_files \$uri \$uri/ =404;|return 301 $target_page; |g" /etc/nginx/sites-available/default
+sed -i "s|try_files \$uri \$uri/ =404;|return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; |g" /etc/nginx/sites-available/default
 
 # Restart Nginx to apply changes
 service nginx restart
