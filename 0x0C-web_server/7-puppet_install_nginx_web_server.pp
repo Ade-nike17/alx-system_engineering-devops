@@ -1,35 +1,37 @@
-# This script installs nginx web server (w/ puppet)
+#This script installs nginx web server (w/ Puppet)
 
 package { 'nginx':
-    ensure => 'installed',
-}
-
-file { '/etc/nginx/html':
-    ensure => 'directory',
-}
-
-file { '/etc/nginx/html/index.html':
-    content => 'Hello World!',
-    require => File['/etc/nginx/html'],
+    ensure  => installed,
 }
 
 file { '/etc/nginx/sites-available/default':
+    ensure  => file,
     content => "server {
-        listen 80;
+        listen 80 default_server;
         server_name _;
 
-        root /etc/nginx/html;
+        root /var/www/html;
         index index.html index.htm;
 
         location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+            rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+
+        location / {
+            try_files \$uri \$uri/ =404;
         }
     }",
-    require => Package ['nginx'],
+    require => Package['nginx'],
+    notify  => Service['nginx'],
+}
+
+
+file { '/var/www/html/index.html':
+    content => 'Hello World!',
 }
 
 service { 'nginx':
-    ensure  => 'running',
+    ensure  => running,
     enable  => true,
-    require => Package ['nginx'],
+    require => Package['nginx'],
 }
