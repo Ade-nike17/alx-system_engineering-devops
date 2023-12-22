@@ -14,7 +14,7 @@ file { '/etc/nginx/sites-available/default':
         index index.html index.htm;
 
         location /redirect_me {
-            rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4;
+            rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         }
 
         location / {
